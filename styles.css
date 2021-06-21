@@ -1,0 +1,31 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.maincalc {
+    background-color: gray;
+    
+}
+
+
+.screen {
+    
+}
+
+button {
+    font-size: 60px;
+}
+
+.bigbuttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.smallbuttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

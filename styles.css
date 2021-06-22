@@ -12,8 +12,20 @@ body {
 }
 
 
-.screen {
-    
+.upperscreen {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.lowerscreen {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.digit {
+    font-size: 60px;
 }
 
 button {

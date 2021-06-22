@@ -33,8 +33,6 @@ function operate (operator, num1, num2) {
         console.log (divide (num1, num2));
     }
     return answer;
-
-    // may need to put displaylower in here
 }
 
 // Functions to populate the display
@@ -46,26 +44,21 @@ function displayNum (userNumber) {
     newNum.classList.add("digit");
     newNum.textContent = userNumber;
     upperdisplay.appendChild(newNum);
+    let displayArray = [userNumber];
+    console.log (displayArray);
 }
 
 const lowerdisplay = document.querySelector(".lowerscreen");
 
-// function displayAnswer () {
-//     let answer = document.createElement("div");
-//     answer.classList.add("digit");
-//     answer.textContent = "0";
-//     lowerdisplay.appendChild(answer);
-// }
-
-// temp lowerdisplay answer
-
-let answer = document.createElement("div");
-answer.classList.add("digit");
-answer.textContent = "0";
-lowerdisplay.appendChild(answer);
+function displayAnswer (computedAnswer) {
+    let answer = document.createElement("div");
+    answer.classList.add("digit");
+    answer.textContent = computedAnswer;
+    lowerdisplay.appendChild(answer);
+}
 
 
-// Listeners for keypad buttons
+// Listeners for calculator buttons
 
 const zeroButton = document.getElementById("zero");
 zeroButton.addEventListener("click", function () {displayNum(0)});

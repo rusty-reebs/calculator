@@ -38,14 +38,31 @@ function operate (operator, num1, num2) {
 // Functions to populate the display
 
 const upperdisplay = document.querySelector(".upperscreen");
+let displayFirstNumArray = [];
+let displaySecondNumArray = [];
+let operator = "";
 
 function displayNum (userNumber) {
     let newNum = document.createElement("div");
     newNum.classList.add("digit");
     newNum.textContent = userNumber;
     upperdisplay.appendChild(newNum);
-    let displayArray = [userNumber];
-    console.log (displayArray);
+    if (operator == "") {
+        displayFirstNumArray.push(userNumber)};
+    if (operator !== "") {
+        displaySecondNumArray.push(userNumber)};
+    
+    console.log (displayFirstNumArray);
+    console.log (displaySecondNumArray);
+}
+
+function displayOperator (userOperator) {
+    let newOperator = document.createElement("div");
+    newOperator.classList.add("digit");
+    newOperator.textContent = userOperator;
+    upperdisplay.appendChild(newOperator);
+    operator = userOperator;
+
 }
 
 const lowerdisplay = document.querySelector(".lowerscreen");
@@ -91,16 +108,16 @@ const nineButton = document.getElementById("nine");
 nineButton.addEventListener("click", function () {displayNum(9)});
 
 const plusButton = document.getElementById("plus");
-plusButton.addEventListener("click", function () {displayNum("+")});
+plusButton.addEventListener("click", function () {displayOperator("+")});
 
 const minusButton = document.getElementById("minus");
-minusButton.addEventListener("click", function () {displayNum("-")});
+minusButton.addEventListener("click", function () {displayOperator("-")});
 
 const timesButton = document.getElementById("times");
-timesButton.addEventListener("click", function () {displayNum("*")});
+timesButton.addEventListener("click", function () {displayOperator("*")});
 
 const dividedByButton = document.getElementById("divide");
-dividedByButton.addEventListener("click", function () {displayNum("/")});
+dividedByButton.addEventListener("click", function () {displayOperator("/")});
 
 const equalsButton = document.getElementById("equals");
 equalsButton.addEventListener("click", function () {displayNum("=")});

@@ -16,62 +16,85 @@ let divide = (num1, num2) => num1 / num2;
 
 function operate (operator, num1, num2) {
     let answer;
-    if (operator == "plus") {
+    if (operator == "+") {
         answer = add (num1, num2);
         console.log (add (num1, num2));
     }
-    else if (operator == "minus") {
+    else if (operator == "-") {
         answer = subtract (num1, num2);
         console.log (subtract (num1, num2));
     }
-    else if (operator == "times") {
+    else if (operator == "*") {
         answer = multiply (num1, num2);
         console.log (multiply (num1, num2));
     }
-    else if (operator == "dividedBy") {
+    else if (operator == "/") {
         answer = divide (num1, num2);
         console.log (divide (num1, num2));
     }
-    return answer;
-}
+    
+    let answerToDisplay = document.createElement("div");
+    answerToDisplay.textContent = answer;
+    lowerdisplay.appendChild(answerToDisplay);
+};
+// return answer;
+// }
 
 // Functions to populate the display
 
 const upperdisplay = document.querySelector(".upperscreen");
+const lowerdisplay = document.querySelector(".lowerscreen");
 let displayFirstNumArray = [];
 let displaySecondNumArray = [];
 let operator = "";
+let firstNum;
+let secondNum;
+// let firstNumber = displayFirstNumArray.join("");  //! Why is this not working?
+// let secondNumber = displaySecondNumArray.join(""); //! Why is this not working?
+
+// Display the numbers and build arrays
 
 function displayNum (userNumber) {
     let newNum = document.createElement("div");
-    newNum.classList.add("digit");
     newNum.textContent = userNumber;
     upperdisplay.appendChild(newNum);
     if (operator == "") {
         displayFirstNumArray.push(userNumber)};
-    if (operator !== "") {
-        displaySecondNumArray.push(userNumber)};
-    
+        if (operator !== "") {
+            displaySecondNumArray.push(userNumber)};
+    let firstNumber = displayFirstNumArray.join("");
+    let secondNumber = displaySecondNumArray.join("");
+    firstNumber = parseInt(firstNumber);
+    secondNumber= parseInt(secondNumber);
+    firstNum = firstNumber;
+    secondNum = secondNumber;    
     console.log (displayFirstNumArray);
     console.log (displaySecondNumArray);
+    console.log (firstNumber);
+    console.log (secondNumber);
 }
 
-function displayOperator (userOperator) {
+// Display the operator, not included in arrays
+
+function displayOperator (mathSign) {
     let newOperator = document.createElement("div");
-    newOperator.classList.add("digit");
-    newOperator.textContent = userOperator;
+    newOperator.textContent = mathSign;
     upperdisplay.appendChild(newOperator);
-    operator = userOperator;
-
+    operator = mathSign;
+            
 }
+// TODO finish AC button, not working correctly
 
-const lowerdisplay = document.querySelector(".lowerscreen");
-
-function displayAnswer (computedAnswer) {
-    let answer = document.createElement("div");
-    answer.classList.add("digit");
-    answer.textContent = computedAnswer;
-    lowerdisplay.appendChild(answer);
+function allClear () {
+    displayFirstNumArray = [];
+    displaySecondNumArray = [];
+    while (upperdisplay.hasChildNodes()) {
+        upperdisplay.removeChild(upperdisplay.firstChild);
+    }    
+    while (lowerdisplay.hasChildNodes()) {
+        lowerdisplay.removeChild(lowerdisplay.firstChild);
+    }
+    
 }
 
 
@@ -120,5 +143,8 @@ const dividedByButton = document.getElementById("divide");
 dividedByButton.addEventListener("click", function () {displayOperator("/")});
 
 const equalsButton = document.getElementById("equals");
-equalsButton.addEventListener("click", function () {displayNum("=")});
+equalsButton.addEventListener("click", function () {operate (operator, firstNum, secondNum)});
+
+const allClearButton = document.getElementById("clear");
+allClearButton.addEventListener("click", function () {allClear ()});
 

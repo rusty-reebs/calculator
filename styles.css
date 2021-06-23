@@ -1,51 +1,66 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    padding: 0; /* makes body take up entire screen */
+    margin: 0; /* makes body take up entire screen */
+    background-color: #20bf55;
+    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+
 }
+
+
 
 .maincalc {
-    border: 1px solid black;
-    background-color: gray;
-    border-radius: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:400px;
-}
-
-
-.upperscreen {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    border-style: solid;
-}
-
-.lowerscreen {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    border-style: solid;
-}
-
-.digit {
-    font-size: 60px;
-}
-
-button {
-    font-size: 60px;
-}
-
-.bigbuttons {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh; /* it's going to fill 100% of height all the time */
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* says min 120px but can grow large for output screen */
+   
 }
 
-.smallbuttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.maincalc > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.maincalc > button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.bigbutton {
+    grid-column: span 2;
+}
+
+.screen {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.screen .upperscreen {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.screen .lowerscreen {
+    color: white;
+    font-size: 2.5rem;
 }

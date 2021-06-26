@@ -88,6 +88,9 @@ function displayOperator (mathSign) {
 function allClear () {
     displayFirstNumArray = [];
     displaySecondNumArray = [];
+    firstNum = 0;
+    secondNum = 0;
+    operator = "";
     while (upperdisplay.hasChildNodes()) {
         upperdisplay.removeChild(upperdisplay.firstChild);
     }    
